@@ -2,7 +2,7 @@
 {
     Console.WriteLine(text);
     int n = Convert.ToInt32(Console.ReadLine());
-    while (n < 0) n = GetNumberFromConsole(text);
+    while (n < 1) n = GetNumberFromConsole(text);
     return n;
 }
 
