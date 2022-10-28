@@ -52,21 +52,20 @@ int CountStringsInArray(string[] arr, int limit)
     return count; 
 } 
 
-string[] GetArrayOfLimitStrings(string[] arr, int limit)
+string[] GetArrayOfLimitStrings(string[] array, int limit)
 {
-    string[] array = new string[CountStringsInArray(arr, limit)];
+    string[] newArray = new string[CountStringsInArray(array, limit)];
     int j = 0;
-    for(int i = 0; i < arr.Length; i++)
+    for(int i = 0; i < array.Length; i++)
     {
-        if (arr[i].Length <= limit)
+        if (array[i].Length <= limit)
         {
-            array[j] = arr[i];
+            newArray[j] = array[i];
             j++;
         }
     }
-    return array; 
+    return newArray; 
 }
-
 
 // КОД ОСНОВНОЙ ПРОГРАММЫ
   string[] array = {"Раз", "два", "три", "четыре", "пять", "я", "иду", "тебя", "искать!"}; 
