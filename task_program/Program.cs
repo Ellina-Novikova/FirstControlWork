@@ -1,11 +1,37 @@
-﻿// 
-int GetNumberFromConsole(string text)
+﻿int GetNumberFromConsole(string text)
 {
     Console.WriteLine(text);
-    return Convert.ToInt32(Console.ReadLine());
+    int n = Convert.ToInt32(Console.ReadLine());
+    while (n < 0) n = GetNumberFromConsole(text);
+    return n;
 }
 
+string GetStringFromConsole(string text)
+{
+    Console.WriteLine(text);
+    return Console.ReadLine();
+}
 
+bool Choice(string text)
+{
+    Console.WriteLine();
+    Console.WriteLine(text);
+    Console.WriteLine("ДА - введите 1");
+    Console.WriteLine("НЕТ - введите 0");
+    int n = Convert.ToInt32(Console.ReadLine());
+    if (n == 1) return true;
+    if (n == 0) return false;
+    else return Choice(text);        
+}
+
+void FillArray(string[] array)
+{
+    for(int i = 0; i < array.Length; i++)
+    {
+        array[i] = GetStringFromConsole($"Введите {i + 1}-ю строку:");
+    }
+    Console.WriteLine();
+}
 
 void PrintArray(string[] array)
 {
@@ -15,8 +41,6 @@ void PrintArray(string[] array)
     }
     Console.WriteLine();
 }
-
-
 
 int CountStringsInArray(string[] arr, int limit)
 {
@@ -45,11 +69,17 @@ string[] GetArrayOfLimitStrings(string[] arr, int limit)
 
 
 // КОД ОСНОВНОЙ ПРОГРАММЫ
-
-string[] array1 = {"Раз", "два", "три", "четыре", "пять", "я", "иду", "тебя", "искать!"};
-int limit = GetNumberFromConsole("Максимальное количество символов в строке? = ");
+  string[] array = {"Раз", "два", "три", "четыре", "пять", "я", "иду", "тебя", "искать!"}; 
+  if (!Choice("Использовать заданный массив?"))
+    {
+        array = new string[GetNumberFromConsole("Введите количество элементов в массиве")];
+        FillArray(array);
+    }
+Console.WriteLine();  
 Console.WriteLine("Задан массив строк");
-PrintArray(array1);
+PrintArray(array);
+Console.WriteLine();
+int limit = GetNumberFromConsole("Максимальное количество символов в строке? = ");
 Console.WriteLine();
 Console.WriteLine("Новый массив строк");
-PrintArray(GetArrayOfLimitStrings(array1, limit));
+PrintArray(GetArrayOfLimitStrings(array, limit));
