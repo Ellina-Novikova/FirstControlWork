@@ -8,8 +8,8 @@
 
 string GetStringFromConsole(string text)
 {
-    Console.WriteLine(text);
-    return Console.ReadLine();
+    Console.WriteLine(text);    
+    return Console.ReadLine();   
 }
 
 bool Choice(string text)
@@ -20,8 +20,11 @@ bool Choice(string text)
     Console.WriteLine("НЕТ - введите 0");
     int n = Convert.ToInt32(Console.ReadLine());
     if (n == 1) return true;
-    if (n == 0) return false;
-    else return Choice(text);        
+    else 
+    {
+        if (n == 0) return false;
+        else return Choice(text);
+    }        
 }
 
 void FillArray(string[] array)
@@ -75,10 +78,10 @@ string[] GetArrayOfLimitStrings(string[] array, int limit)
         FillArray(array);
     }
 Console.WriteLine();  
-Console.WriteLine("Задан массив строк");
+Console.WriteLine("Задан массив строк:");
 PrintArray(array);
 Console.WriteLine();
 int limit = GetNumberFromConsole("Максимальное количество символов в строке? = ");
 Console.WriteLine();
-Console.WriteLine("Новый массив строк");
+Console.WriteLine("Новый массив строк:");
 PrintArray(GetArrayOfLimitStrings(array, limit));
